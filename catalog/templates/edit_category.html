@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% include "messages.html" %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 container-padded">
+
+                <div class="col-xs-4 border-grey-right">
+
+                    <h1>Edit Category</h1>
+                    <h1>{{category.name}}</h1>
+
+                </div>
+
+                <div class="col-md-8">
+                    <form name="editCategory" action="{{ url_for('editCategory', category_id=category.id)}}" method="post">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input name="name" type="text" class="form-control" value="{{category.name}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    </form>
+                    <a href="{{url_for('showItems', category_id=category.id)}}">
+                        <button class="btn btn-danger btn-block">Cancel</button>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}

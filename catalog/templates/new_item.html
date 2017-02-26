@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% include 'messages.html' %}
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 container-padded">
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                    <h1>Add Menu Item</h1>
+                    <h1>{{category.name}}</h1>
+                </div>
+
+                <div class="col-md-4">
+                    <form  action="{{ url_for('newItem',category_id = category.id)}}" method="post">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input name="name" type="text" class="form-control" placeholder="Name of course">
+                            <label>Description:</label>
+                            <textarea name="description" class="form-control" placeholder="Description"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Create</button>
+                    </form>
+                    <a href="{{ url_for('showItems',category_id = category.id)}}">
+                        <button name="cancel" class="btn btn-danger btn-block">Cancel</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

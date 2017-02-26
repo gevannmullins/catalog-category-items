@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% include 'messages.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 container-padded">
+
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                    <h1>{{ category.name }}</h1>
+                    <h2>Owner: {{ creator.name }}</h2>
+                    <a href="{{ url_for('editCategory', category_id=category.id) }}">
+                        <button class="btn btn-primary">Edit Category</button>
+                    </a>
+                    <a href="{{ url_for('newItem', category_id=category.id) }}">
+                        <button class="btn btn-primary">Add Item</button>
+                    </a>
+                    <a href="{{ url_for('deleteCategory', category_id=category.id) }}">
+                        <button class="btn btn-danger">Delete Category</button>
+                    </a>
+
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+
+                    {% if items != [] %}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h2>Item</h2>
+                                {% for item in items %}
+                                    <div class="menu-item">
+                                        <h3>{{ item.name }}</h3>
+                                        <p>{{ item.description }}</p>
+                                        <a href='{{ url_for('editItem', category_id = category.id, item_id=item.id ) }}'>Edit</a>
+                                        |
+                                        <a href='{{ url_for('deleteItem', category_id = category.id, item_id=item.id ) }}'>Delete</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

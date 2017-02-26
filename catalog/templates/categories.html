@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% include 'messages.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 container-padded">
+
+                <!-- lists all categories -->
+                <div class="col-xs-4 border-grey-right">
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <h1>Categories</h1>
+                            <a href="{{url_for('newCategory')}}">
+                                <button class="btn btn-primary">Add Category</button>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-12">
+                            {% for category in categories %}
+                                 <a href = "{{ url_for('showItems', category_id=category.id) }}">
+                                    <div class="row">
+                                        <div class="col-md-12 category-list">
+                                            <h3>{{category.name}}</h3>
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- list the latest items -->
+                <div class="col-xs-8">
+                    <h1>Items</h1>
+                    {% for item in items %}
+                        <li>
+                            <a href="/categories/{{ item.category_id }}/items/{{ item.id }}/edit">{{ item.name }}</a>
+                        </li>
+                    {% endfor %}
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

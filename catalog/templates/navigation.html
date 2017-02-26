@@ -1,0 +1,37 @@
+{% block navigation %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/" style="color: #ffffff;">
+                <h>Catalog-Category-Items</h>
+            </a>
+            {% if 'username' in session %}
+                <a class="navbar-brand" style="color: #F0424B" href="/">
+                    Welcome, {{session['username']}}</a>
+            {% else %}
+                <a class="navbar-brand" style="color: #F0424B" href="/">
+                    Home</a>
+            {% endif %}
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- add in if else statement when have a logged in user -->
+                {% if 'username' in session %}
+                    <li><a style="color: #72B1B1" href="/logout">Log Out</a></li>
+                {% else %}
+                    <li><a style="color: #72B1B1" href="/login">Log In</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+    <!-- /.container -->
+</nav>
+
+{% endblock %}

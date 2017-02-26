@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Udacity - Edit Item</title>
+{% endblock %}
+
+{% include 'messages.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 container-padded">
+                <div class="col-xs-4 border-grey-right">
+
+
+                    <h1>Edit Menu Item</h1>
+                    <h1>{{ category.name }}</h1>
+
+                </div>
+                <div class="col-md-8">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label>Name:</label>
+                            <input name="name" type="text" class="form-control" value="{{ item.name }}">
+                            <label>Description:</label>
+                            <textarea name="description" class="form-control">{{ item.description }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Edit</button>
+                    </form>
+                    <a href="{{ url_for('showItems',category_id = category.id) }}">
+                        <button name="cancel" class="btn btn-danger btn-block">Cancel</button>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
